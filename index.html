@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WATER OF LIFE • Agua de Vida</title>
+  <meta name="description" content="Ministerio de Alabanza & Adoración - Letras, acordes, repertorios, turnos y multitracks." />
+  <style>
+    :root{
+      --bg0:#050b17;
+      --bg1:#071a3b;
+      --card: rgba(255,255,255,.07);
+      --card2: rgba(255,255,255,.10);
+      --stroke: rgba(255,255,255,.14);
+      --txt: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --accent:#00d4ff;
+      --accent2:#7c4dff;
+      --ok:#27e5a5;
+      --warn:#ffcc66;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      color:var(--txt);
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(124,77,255,.24), transparent 60%),
+        radial-gradient(900px 500px at 90% 15%, rgba(0,212,255,.22), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      overflow-x:hidden;
+    }
+
+    /* Topbar */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(5,11,23,.78), rgba(5,11,23,.35));
+      border-bottom:1px solid var(--stroke);
+    }
+    .topbar-inner{
+      max-width:1100px; margin:0 auto;
+      display:flex; gap:12px; align-items:center; justify-content:space-between;
+      padding:12px 16px;
+    }
+    .brand{
+      display:flex; gap:10px; align-items:center; min-width: 220px;
+    }
+    .logo{
+      width:40px; height:40px; border-radius:14px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), transparent 45%),
+        linear-gradient(135deg, rgba(0,212,255,.9), rgba(124,77,255,.9));
+      box-shadow: 0 10px 30px rgba(0,212,255,.18);
+      position:relative;
+    }
+    .logo:after{
+      content:"";
+      position:absolute; inset:1px;
+      border-radius:13px;
+      border:1px solid rgba(255,255,255,.22);
+    }
+    .brand h1{margin:0; font-size:14px; letter-spacing:.10em}
+    .brand span{display:block; font-size:12px; color:var(--muted); letter-spacing:.03em}
+
+    .nav{
+      display:flex; flex-wrap:wrap; gap:8px; justify-content:flex-end;
+    }
+    .pill{
+      text-decoration:none; color:var(--txt);
+      padding:9px 12px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      transition: .2s ease;
+      font-weight:600; font-size:13px;
+    }
+    .pill:hover{ transform: translateY(-1px); border-color: rgba(0,212,255,.35); box-shadow: 0 10px 18px rgba(0,212,255,.10); }
+
+    /* Layout */
+    .wrap{max-width:1100px; margin:0 auto; padding:20px 16px 70px;}
+    .hero{
+      padding:40px 0 26px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .hero{grid-template-columns: 1fr; padding-top:26px;}
+      .brand{min-width:auto}
+    }
+
+    .hero-card{
+      border:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border-radius:22px;
+      padding:22px;
+      position:relative;
+      overflow:hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    }
+    .hero-card:before{
+      content:"";
+      position:absolute;
+      width:520px; height:520px;
+      background: radial-gradient(circle, rgba(0,212,255,.22), transparent 60%);
+      top:-340px; left:-220px;
+      filter: blur(0px);
+    }
+    .hero-title{
+      margin:0;
+      font-size:42px;
+      line-height:1.05;
+      letter-spacing:.02em;
+    }
+    .sub{
+      margin:10px 0 0;
+      color:var(--muted);
+      max-width: 60ch;
+      font-size:15px;
+    }
+
+    .cta-row{
+      display:flex; flex-wrap:wrap; gap:10px; margin-top:18px;
+    }
+    .btn{
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      color:var(--txt);
+      padding:11px 14px;
+      border-radius:14px;
+      font-weight:700;
+      text-decoration:none;
+      display:inline-flex;
+      gap:10px; align-items:center;
+      transition:.2s ease;
+      cursor:pointer;
+    }
+    .btn:hover{ transform: translateY(-1px); border-color: rgba(0,212,255,.42); box-shadow: 0 12px 22px rgba(0,212,255,.12); }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(0,212,255,.95), rgba(124,77,255,.92));
+      border-color: rgba(255,255,255,.20);
+      color:#071024;
+    }
+
+    .mini-grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+    }
+    @media (min-width: 900px){
+      .mini-grid{grid-template-columns: 1fr;}
+    }
+    .stat{
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.05);
+      border-radius:18px;
+      padding:16px;
+    }
+    .stat h3{margin:0 0 6px; font-size:14px; letter-spacing:.06em; text-transform:uppercase}
+    .stat p{margin:0; color:var(--muted); font-size:13px}
+
+    /* Sections */
+    .section{
+      margin-top:22px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      border-radius:22px;
+      padding:18px;
+    }
+    .section-head{
+      display:flex; gap:10px; align-items:flex-end; justify-content:space-between;
+      flex-wrap:wrap;
+      margin-bottom:12px;
+    }
+    .section h2{
+      margin:0;
+      font-size:18px;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+    .section small{color:var(--muted)}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    @media (max-width: 900px){ .grid{grid-template-columns: 1fr;} }
+
+    .card{
+      border:1px solid rgba(255,255,255,.14);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      border-radius:18px;
+      padding:14px;
+    }
+    .card h3{margin:0 0 8px; font-size:16px}
+    .meta{
+      display:flex; flex-wrap:wrap; gap:8px;
+      margin-bottom:10px;
+    }
+    .tag{
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: var(--muted);
+    }
+    .tag.ok{border-color: rgba(39,229,165,.28); color: rgba(39,229,165,.95);}
+    .tag.warn{border-color: rgba(255,204,102,.28); color: rgba(255,204,102,.95);}
+
+    details{
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:16px;
+      background: rgba(0,0,0,.12);
+      padding:10px 12px;
+    }
+    summary{
+      cursor:pointer;
+      font-weight:800;
+      list-style:none;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px;
+    }
+    summary::-webkit-details-marker{display:none}
+    .song-body{
+      margin-top:10px;
+      color: rgba(255,255,255,.86);
+      font-size:14px;
+      line-height:1.5;
+      white-space:pre-wrap;
+    }
+    .song-actions{
+      display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;
+    }
+    .tiny{
+      font-size:12px;
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color:var(--txt);
+      text-decoration:none;
+      cursor:pointer;
+    }
+    .tiny:hover{ border-color: rgba(0,212,255,.35); }
+
+    .search{
+      display:flex; gap:10px; align-items:center;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      border-radius:16px;
+      padding:10px 12px;
+      min-width: 260px;
+    }
+    .search input{
+      width:100%;
+      border:none; outline:none;
+      background: transparent;
+      color: var(--txt);
+      font-size:14px;
+    }
+    .search input::placeholder{color: rgba(255,255,255,.55)}
+    .footer{
+      margin-top:20px;
+      text-align:center;
+      color:rgba(255,255,255,.65);
+      font-size:12px;
+    }
+    .muted{color:var(--muted)}
+    .divider{height:1px; background: rgba(255,255,255,.10); margin:12px 0}
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>WATER OF LIFE</h1>
+          <span>AGUA DE VIDA • Alabanza & Adoración</span>
+        </div>
+      </div>
+
+      <div class="nav">
+        <a class="pill" href="#alabanzas">Alabanzas</a>
+        <a class="pill" href="#adoraciones">Adoraciones</a>
+        <a class="pill" href="#repertorios">Repertorios</a>
+        <a class="pill" href="#turnos">Turnos</a>
+        <a class="pill" href="#multitrack">Multitrack</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="hero-card">
+        <h2 class="hero-title">WATER OF LIFE<br><span style="color:rgba(255,255,255,.85); font-weight:800;">AGUA DE VIDA</span></h2>
+        <p class="sub">
+          Sitio del ministerio para publicar <b>canciones con acordes</b>, <b>repertorios</b>, <b>turnos semanales</b> y <b>multitracks</b>.
+          Todo ordenado, rápido y desde el celular.
+        </p>
+
+        <div class="cta-row">
+          <a class="btn primary" href="#repertorios">📋 Ver repertorios</a>
+          <a class="btn" href="#multitrack">🎧 Ir a multitracks</a>
+          <button class="btn" type="button" onclick="scrollToSongs()">🎼 Buscar canciones</button>
+        </div>
+
+        <div class="divider"></div>
+        <p class="muted" style="margin:0;font-size:13px;">
+          Tip: podés pegar links de Google Drive para audios y PDFs (acordes / letras) sin complicarte.
+        </p>
+      </div>
+
+      <div class="mini-grid">
+        <div class="stat">
+          <h3>Organización</h3>
+          <p>Secciones claras: Alabanzas, Adoraciones, Repertorios, Turnos y Multitrack.</p>
+        </div>
+        <div class="stat">
+          <h3>Rápido en celular</h3>
+          <p>Diseño responsive + buscador de canciones.</p>
+        </div>
+        <div class="stat">
+          <h3>Compartible</h3>
+          <p>Ideal para pasar el link al grupo y tener todo en un solo lugar.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ALABANZAS -->
+    <section class="section" id="alabanzas">
+      <div class="section-head">
+        <div>
+          <h2>Alabanzas</h2>
+          <small>Agregá aquí canciones más movidas / congregacionales.</small>
+        </div>
+        <div class="search" title="Buscar por nombre, tono o contenido">
+          🔎 <input id="songSearch" placeholder="Buscar canción (ej: ‘Grande’, ‘G’, ‘Coro’)" />
+        </div>
+      </div>
+
+      <div class="grid" id="songGrid">
+        <!-- Ejemplo 1 -->
+        <div class="card song" data-type="alabanza" data-search="ejemplo cancion g intro verso coro">
+          <h3>Ejemplo Canción (Alabanza)</h3>
+          <div class="meta">
+            <span class="tag ok">Tono: G</span>
+            <span class="tag">BPM: 120</span>
+            <span class="tag warn">Nuevo</span>
+          </div>
+
+          <details>
+            <summary>
+              Ver letra + acordes
+              <span class="muted">▼</span>
+            </summary>
+            <div class="song-body">
+Intro: G – D – Em – C
+
+Verso:
+G
+(Escribí la letra aquí)
+D
+(Escribí la letra aquí)
+
+Coro:
+Em
+(Escribí la letra aquí)
+C
+(Escribí la letra aquí)
+            </div>
+
+            <div class="song-actions">
+              <button class="tiny" onclick="copyText(this)">📋 Copiar</button>
+              <a class="tiny" href="#" target="_blank" rel="noreferrer">📄 PDF (link)</a>
+              <a class="tiny" href="#" target="_blank" rel="noreferrer">🎧 Audio (link)</a>
+            </div>
+          </details>
+        </div>
+
+        <!-- Ejemplo 2 -->
+        <div class="card song" data-type="alabanza" data-search="otra cancion d intro coro">
+          <h3>Otra Canción (Alabanza)</h3>
+          <div class="meta">
+            <span class="tag ok">Tono: D</span>
+            <span class="tag">BPM: 105</span>
+          </div>
+
+          <details>
+            <summary>
+              Ver letra + acordes
+              <span class="muted">▼</span>
+            </summary>
+            <div class="song-body">
+Intro: D – A – Bm – G
+
+Verso:
+D
+...
+A
+...
+
+Coro:
+Bm
+...
+G
+...
+            </div>
+            <div class="song-actions">
+              <button class="tiny" onclick="copyText(this)">📋 Copiar</button>
+              <a class="tiny" href="#" target="_blank" rel="noreferrer">🎧 Audio (link)</a>
+            </div>
+          </details>
+        </div>
+
+        <!-- Plantilla rápida -->
+        <div class="card">
+          <h3>➕ Plantilla para agregar canciones</h3>
+          <p class="muted" style="margin:0; font-size:13px;">
+            Duplicá una tarjeta como estas y cambiá: <b>nombre</b>, <b>tono</b>, <b>acordes</b> y <b>letra</b>.
+            En “PDF/Audio/link” pegás tus links de Drive.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADORACIONES -->
+    <section class="section" id="adoraciones">
+      <div class="section-head">
+        <div>
+          <h2>Adoraciones</h2>
+          <small>Canciones más íntimas / de adoración.</small>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card song" data-type="adoracion" data-search="ejemplo adoracion a intro verso coro">
+          <h3>Ejemplo Adoración</h3>
+          <div class="meta">
+            <span class="tag ok">Tono: A</span>
+            <span class="tag">BPM: 72</span>
+          </div>
+
+          <details>
+            <summary>
+              Ver letra + acordes
+              <span class="muted">▼</span>
+            </summary>
+            <div class="song-body">
+Intro: A – E – F#m – D
+
+Verso:
+A
+...
+E
+...
+
+Coro:
+F#m
+...
+D
+...
+            </div>
+            <div class="song-actions">
+              <button class="tiny" onclick="copyText(this)">📋 Copiar</button>
+              <a class="tiny" href="#" target="_blank" rel="noreferrer">🎧 Audio (link)</a>
+              <a class="tiny" href="#" target="_blank" rel="noreferrer">🎛 Multitrack (link)</a>
+            </div>
+          </details>
+        </div>
+
+        <div class="card">
+          <h3>💡 Consejo</h3>
+          <p class="muted" style="margin:0; font-size:13px;">
+            Si tenés muchas canciones, podés crear otra página solo de canciones,
+            o separarlas por “A–F” / “G–L” / “M–Z”.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- REPERTORIOS -->
+    <section class="section" id="repertorios">
+      <div class="section-head">
+        <div>
+          <h2>Repertorios</h2>
+          <small>Lista por fecha. Ideal para domingo / ensayo.</small>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Domingo (Fecha)</h3>
+          <div class="meta">
+            <span class="tag">Culto</span>
+            <span class="tag ok">Estado: Confirmado</span>
+          </div>
+          <div class="song-body">1) Canción 1 — (Tono)
+2) Canción 2 — (Tono)
+3) Canción 3 — (Tono)
+4) Canción 4 — (Tono)</div>
+          <div class="song-actions">
+            <a class="tiny" href="#" target="_blank" rel="noreferrer">📄 PDF repertorio</a>
+            <a class="tiny" href="#turnos">🗓 Ver turnos</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Ensayo (Fecha)</h3>
+          <div class="meta">
+            <span class="tag">Ensayo</span>
+            <span class="tag warn">Estado: En armado</span>
+          </div>
+          <div class="song-body">1) ...
+2) ...
+3) ...</div>
+          <div class="song-actions">
+            <a class="tiny" href="#" target="_blank" rel="noreferrer">📝 Notas / Drive</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>📅 Calendario (opcional)</h3>
+          <p class="muted" style="margin:0;font-size:13px;">
+            Si usás Google Calendar, podés incrustarlo acá pegando el iframe.
+          </p>
+          <div class="song-body muted" style="font-size:12px;">(Pegá aquí tu iframe de Google Calendar)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TURNOS -->
+    <section class="section" id="turnos">
+      <div class="section-head">
+        <div>
+          <h2>Turnos semanales</h2>
+          <small>Voces + batería (y lo que quieras sumar).</small>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Semana (Fecha a Fecha)</h3>
+          <div class="meta">
+            <span class="tag ok">Actual</span>
+          </div>
+          <div class="song-body">🎤 Voz principal: _______
+🎙 Coros: _______ / _______
+🥁 Batería: _______
+🎸 Bajo: _______
+🎹 Teclado: _______</div>
+          <div class="song-actions">
+            <a class="tiny" href="#" target="_blank" rel="noreferrer">🗒 Lista / Drive</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Reglas rápidas</h3>
+          <div class="song-body muted">• Confirmar asistencia 24h antes
+• Llegar 30 min antes
+• Revisar tonos y multitracks antes del ensayo</div>
+        </div>
+
+        <div class="card">
+          <h3>📌 Sugerencia pro</h3>
+          <p class="muted" style="margin:0;font-size:13px;">
+            Si querés que solo el equipo lo vea, lo ideal es usar links a Drive con permisos “solo con enlace”
+            o armar una segunda web privada (más adelante).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MULTITRACK -->
+    <section class="section" id="multitrack">
+      <div class="section-head">
+        <div>
+          <h2>Multitrack & audios</h2>
+          <small>Links a carpetas, pistas, click, guía, stems, etc.</small>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Canción (Nombre)</h3>
+          <div class="meta">
+            <span class="tag ok">Tono: ___</span>
+            <span class="tag">Click</span>
+            <span class="tag">Guía</span>
+          </div>
+          <div class="song-actions">
+            <a class="tiny" href="#" target="_blank" rel="noreferrer">🎛 Multitrack</a>
+            <a class="tiny" href="#" target="_blank" rel="noreferrer">🎧 Pista sin voces</a>
+            <a class="tiny" href="#" target="_blank" rel="noreferrer">⏱ Click</a>
+            <a class="tiny" href="#" target="_blank" rel="noreferrer">🎤 Guía</a>
+          </div>
+          <p class="muted" style="margin:12px 0 0;font-size:13px;">
+            Pegá links de Drive (carpeta o archivo). Si querés, podés poner un link a YouTube privado/no listado.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Carpeta general</h3>
+          <p class="muted" style="margin:0;font-size:13px;">Un solo botón con todos los multitracks.</p>
+          <div class="song-actions" style="margin-top:10px;">
+            <a class="tiny" href="#" target="_blank" rel="noreferrer">📁 Abrir carpeta Drive</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Contacto</h3>
+          <div class="song-body muted">Para pedir acceso / links:
+📩 (poné acá WhatsApp o mail)</div>
+        </div>
+      </div>
+    </section>
+
+    <p class="footer">© 2026 WATER OF LIFE • AGUA DE VIDA</p>
+  </main>
+
+  <script>
+    // Scroll helper
+    function scrollToSongs(){
+      const el = document.querySelector('#alabanzas');
+      if(el) el.scrollIntoView({behavior:'smooth'});
+      const input = document.getElementById('songSearch');
+      if(input){ setTimeout(()=>input.focus(), 350); }
+    }
+
+    // Simple search filter (searches in data-search of song cards)
+    const input = document.getElementById('songSearch');
+    const songs = Array.from(document.querySelectorAll('.song'));
+    if(input){
+      input.addEventListener('input', () => {
+        const q = (input.value || '').trim().toLowerCase();
+        songs.forEach(card => {
+          const hay = (card.getAttribute('data-search') || '').toLowerCase();
+          card.style.display = (!q || hay.includes(q)) ? '' : 'none';
+        });
+      });
+    }
+
+    // Copy song text (from the nearest details song-body)
+    function copyText(btn){
+      const card = btn.closest('.card');
+      const body = card ? card.querySelector('.song-body') : null;
+      const text = body ? body.innerText.trim() : '';
+      if(!text) return;
+      navigator.clipboard.writeText(text).then(()=>{
+        const old = btn.textContent;
+        btn.textContent = '✅ Copiado';
+        setTimeout(()=>btn.textContent = old, 900);
+      });
+    }
+  </script>
+</body>
+  </html>

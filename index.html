@@ -729,4 +729,99 @@ Puente: F - G - Am - Em (repetir según la intensidad)
   </script>
 </body>
 </html>
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WATER OF LIFE • Agua de Vida</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="logo"></div>
+        <div class="brand-text">
+          <div class="brand-title">WATER OF LIFE</div>
+          <div class="brand-sub">Agua de Vida • Alabanza & Adoración</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <button class="pill active" data-view="catalog">Alabanzas</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- CATALOGO -->
+    <section id="catalogView" class="view">
+      <div class="hero">
+        <h1>Catálogo de Alabanzas</h1>
+        <p class="muted">Elegí una canción para ver <b>Letra y Acordes</b> + reproductor multitrack.</p>
+
+        <div class="search-row">
+          <input id="search" class="search" placeholder="Buscar canción (ej: 'Grande', 'G', '127')"/>
+        </div>
+      </div>
+
+      <div id="catalogList" class="grid"></div>
+    </section>
+
+    <!-- VISTA CANCION -->
+    <section id="songView" class="view hidden">
+      <div class="song-header">
+        <button class="back" id="backBtn">← Volver</button>
+
+        <div class="song-title-area">
+          <h2 id="songTitle">—</h2>
+          <div class="song-meta">
+            <span class="chip" id="songKey">Tono: —</span>
+            <span class="chip" id="songBpm">BPM: —</span>
+          </div>
+        </div>
+
+        <div class="transpose">
+          <button id="downBtn">-1</button>
+          <button id="upBtn">+1</button>
+          <button id="resetBtn" class="ghost">Reset</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <button class="accordion" id="toggleLyrics">
+          <span>🎼 Letra + Acordes</span>
+          <span id="accIcon">▾</span>
+        </button>
+
+        <div id="lyricsPanel" class="panel hidden">
+          <div id="lyricsContainer" class="lyrics"></div>
+
+          <div class="player">
+            <div class="player-row">
+              <button id="playBtn" class="play">▶</button>
+              <input id="seek" type="range" min="0" max="100" value="0" />
+              <span id="time" class="time">0:00 / 0:00</span>
+            </div>
+
+            <audio id="audio" preload="metadata"></audio>
+
+            <div class="player-actions">
+              <a id="driveOpen" class="tiny" target="_blank" rel="noreferrer">📁 Abrir en Drive</a>
+            </div>
+
+            <p class="muted small">
+              Si el audio no reproduce, es por permisos del Drive. Debe estar en “Cualquiera con el enlace”.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="songs.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
 Propietario -》 Marcos Sosa

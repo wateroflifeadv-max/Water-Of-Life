@@ -8,7 +8,7 @@ window.SONGS = [
     title: "Alaba",
     key: "G",
     bpm: 127,
-    driveId: "https://drive.google.com/file/d/1hQya67De9D9PXlzzDvGmZskf_4XacqS3/view?usp=drivesdk",
+    driveId: "https://www.dropbox.com/scl/fi/g4q7mshvt7zhlkd9xhfp9/Alaba-Multitrack-Evan-Craft-MP3_160K.mp3?rlkey=1gnsfm94p43wggqqlzgkslxkr&st=oukgh3ez&dl=0",
     sections: [
       {
         name: "Refrán",

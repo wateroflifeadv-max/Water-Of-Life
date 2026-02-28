@@ -1,175 +1,734 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>WATER OF LIFE · Agua de Vida</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WATER OF LIFE · Agua de Vida</title>
+  <meta name="description" content="Ministerio de Alabanza & Adoración · Canciones (acordes), repertorios, turnos semanales y multitracks." />
 
-<style>
-:root{
---bg1:#071a3b;
---bg0:#050b17;
---card:rgba(255,255,255,.07);
---stroke:rgba(255,255,255,.15);
---txt:#ffffff;
---muted:rgba(255,255,255,.7);
---accent:#00d4ff;
---accent2:#7c4dff;
-}
+  <style>
+    :root{
+      --bg0:#050b17;
+      --bg1:#071a3b;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.10);
+      --stroke: rgba(255,255,255,.14);
+      --txt: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --accent:#00d4ff;
+      --accent2:#7c4dff;
+      --ok:#27e5a5;
+      --warn:#ffc66c;
+      --danger:#ff5f6d;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius: 22px;
+    }
 
-*{box-sizing:border-box}
-body{
-margin:0;
-font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
-color:var(--txt);
-background:
-radial-gradient(1200px 600px at 10% 10%, rgba(124,77,255,.25), transparent 60%),
-linear-gradient(180deg,var(--bg0),var(--bg1));
-}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      color:var(--txt);
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(124,77,255,.24), transparent 60%),
+        radial-gradient(900px 500px at 90% 20%, rgba(0,212,255,.22), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      overflow-x:hidden;
+    }
 
-.topbar{
-padding:15px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
+    a{color:inherit}
+    .wrap{max-width:1100px;margin:0 auto;padding:18px 14px 50px}
+    .topbar{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(5,11,23,.78), rgba(5,11,23,.35));
+      border-bottom:1px solid var(--stroke);
+    }
+    .topbar-inner{
+      max-width:1100px;margin:0 auto;
+      display:flex;gap:12px;align-items:center;justify-content:space-between;
+      padding:12px 16px;
+    }
 
-.brand{
-font-weight:bold;
-}
+    .brand{
+      display:flex;gap:10px;align-items:center;min-width:220px;
+    }
+    .logo{
+      width:42px;height:42px;border-radius:14px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), transparent 45%),
+        linear-gradient(135deg, rgba(0,212,255,.95), rgba(124,77,255,.95));
+      box-shadow: 0 10px 30px rgba(0,212,255,.18);
+      position:relative;
+    }
+    .logo:after{
+      content:"";
+      position:absolute;inset:1px;border-radius:13px;
+      border:1px solid rgba(255,255,255,.22);
+    }
+    .brand h1{
+      margin:0;font-size:14px;letter-spacing:.08em;text-transform:uppercase;
+      line-height:1.1;
+    }
+    .brand span{
+      display:block;font-size:12px;color:var(--muted);letter-spacing:.03em;
+      margin-top:3px;text-transform:none;
+    }
 
-.nav a{
-margin-left:10px;
-text-decoration:none;
-color:var(--txt);
-padding:8px 14px;
-border-radius:20px;
-background:var(--card);
-border:1px solid var(--stroke);
-font-size:14px;
-}
+    .nav{
+      display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;
+    }
+    .pill{
+      text-decoration:none;
+      padding:9px 12px;border-radius:999px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.05);
+      color:var(--txt);
+      font-weight:600;
+      font-size:13px;
+      transition:.2s ease;
+      user-select:none;
+    }
+    .pill:hover{transform:translateY(-1px);border-color:rgba(0,212,255,.35);box-shadow:0 10px 18px rgba(0,0,0,.2)}
+    .pill.primary{
+      background: linear-gradient(135deg, rgba(0,212,255,.22), rgba(124,77,255,.22));
+      border-color: rgba(0,212,255,.28);
+    }
 
-.hero{
-padding:40px 20px;
-text-align:center;
-}
+    .hero{
+      margin-top:18px;
+      border:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+      overflow:hidden;
+      position:relative;
+    }
+    .hero:before{
+      content:"";
+      position:absolute;inset:-2px;
+      background: radial-gradient(700px 220px at 30% 10%, rgba(0,212,255,.18), transparent 60%),
+                  radial-gradient(700px 240px at 80% 20%, rgba(124,77,255,.20), transparent 60%);
+      pointer-events:none;
+    }
+    .hero-inner{position:relative;display:grid;gap:14px}
+    .hero h2{
+      margin:0;
+      font-size:42px;
+      letter-spacing:.02em;
+      line-height:1.05;
+    }
+    .hero p{margin:0;color:var(--muted);max-width:720px}
+    .cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:12px 14px;border-radius:14px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.06);
+      text-decoration:none;
+      font-weight:700;
+      transition:.2s ease;
+    }
+    .btn:hover{transform:translateY(-1px);border-color:rgba(124,77,255,.35);box-shadow:0 14px 22px rgba(0,0,0,.22)}
+    .btn.big{
+      background: linear-gradient(135deg, rgba(0,212,255,.28), rgba(124,77,255,.28));
+      border-color: rgba(0,212,255,.30);
+    }
 
-.hero h1{
-font-size:32px;
-margin:0 0 10px 0;
-}
+    section{margin-top:18px}
+    .section-title{
+      display:flex;align-items:flex-end;justify-content:space-between;gap:10px;flex-wrap:wrap;
+      margin:18px 2px 10px;
+    }
+    .section-title h3{margin:0;font-size:22px;letter-spacing:.02em}
+    .section-title p{margin:0;color:var(--muted);font-size:13px}
 
-.hero p{
-color:var(--muted);
-}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12, 1fr);
+      gap:12px;
+    }
+    .card{
+      grid-column: span 12;
+      border:1px solid var(--stroke);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.06);
+      box-shadow: 0 12px 30px rgba(0,0,0,.18);
+      overflow:hidden;
+    }
+    .card.pad{padding:14px}
+    .two .card{grid-column: span 12}
+    @media(min-width:820px){
+      .two .card{grid-column: span 6}
+    }
 
-.btn{
-display:inline-block;
-margin-top:20px;
-padding:12px 20px;
-border-radius:25px;
-background:linear-gradient(135deg,var(--accent),var(--accent2));
-color:#000;
-font-weight:bold;
-text-decoration:none;
-}
+    .kpi{
+      display:flex;gap:10px;flex-wrap:wrap;margin-top:8px
+    }
+    .chip{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:7px 10px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color:var(--muted);
+      font-weight:700;font-size:12px;
+    }
+    .chip b{color:var(--txt)}
+    .chip.ok{border-color:rgba(39,229,165,.25)}
+    .chip.warn{border-color:rgba(255,198,108,.28)}
+    .chip.acc{border-color:rgba(0,212,255,.25)}
+    .chip.purp{border-color:rgba(124,77,255,.25)}
 
-.section{
-padding:30px 20px;
-}
+    .search{
+      display:flex;gap:10px;flex-wrap:wrap;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      border-radius: 16px;
+      padding:10px;
+      align-items:center;
+    }
+    .search input{
+      flex:1;
+      min-width:220px;
+      border:0;outline:0;
+      background:transparent;
+      color:var(--txt);
+      font-size:14px;
+    }
+    .search small{color:var(--muted)}
+    .tag{
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.03);
+      color:var(--muted);
+      padding:6px 9px;border-radius:999px;font-weight:800;font-size:12px;
+    }
 
-.card{
-background:var(--card);
-border:1px solid var(--stroke);
-border-radius:15px;
-padding:20px;
-margin-bottom:20px;
-}
+    details{
+      border-top:1px solid rgba(255,255,255,.10);
+      padding:10px 14px 14px;
+    }
+    summary{
+      cursor:pointer;
+      user-select:none;
+      font-weight:800;
+      list-style:none;
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+    }
+    summary::-webkit-details-marker{display:none}
+    .song-body{
+      margin-top:10px;color:var(--muted);font-size:13px;line-height:1.55;
+      white-space:pre-wrap;
+    }
 
-.song h3{
-margin:0 0 10px 0;
-}
+    .row-actions{
+      display:flex;gap:10px;flex-wrap:wrap;margin-top:10px
+    }
+    .tiny{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:9px 11px;border-radius:12px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      text-decoration:none;
+      font-weight:800;font-size:12px;
+    }
+    .tiny:hover{border-color:rgba(0,212,255,.30)}
+    .tiny.danger:hover{border-color:rgba(255,95,109,.35)}
+    .tiny.ok:hover{border-color:rgba(39,229,165,.35)}
 
-footer{
-text-align:center;
-padding:30px 10px;
-color:var(--muted);
-font-size:14px;
-}
-</style>
+    .list{
+      margin:0;padding-left:18px;color:var(--muted);line-height:1.6;font-size:13px
+    }
+    .cols{
+      display:grid;gap:12px;
+      grid-template-columns:1fr;
+    }
+    @media(min-width:820px){.cols{grid-template-columns:1fr 1fr}}
+
+    .footer{
+      margin-top:22px;
+      color:rgba(255,255,255,.55);
+      font-size:12px;
+      text-align:center;
+    }
+
+    .turnos-grid{
+      display:grid;gap:12px;
+      grid-template-columns:1fr;
+    }
+    @media(min-width:820px){.turnos-grid{grid-template-columns: 1fr 1fr}}
+    .turno-line{
+      display:flex;align-items:center;gap:10px;
+      font-weight:800;
+      color:var(--txt);
+      margin:8px 0;
+    }
+    .turno-line span{color:var(--muted);font-weight:700}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:7px 10px;border-radius:999px;
+      border:1px solid rgba(0,212,255,.25);
+      background: rgba(0,212,255,.08);
+      font-weight:900;font-size:12px;
+    }
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
+    .muted{color:var(--muted)}
+  </style>
 </head>
 
 <body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>WATER OF LIFE<span>Agua de Vida · Alabanza & Adoración</span></h1>
+        </div>
+      </div>
 
-<div class="topbar">
-<div class="brand">WATER OF LIFE · Agua de Vida</div>
-<div class="nav">
-<a href="#alabanzas">Alabanzas</a>
-<a href="#turnos">Turnos</a>
-<a href="#multitrack">Multitrack</a>
-</div>
-</div>
+      <nav class="nav">
+        <a class="pill primary" href="#alabanzas">Alabanzas</a>
+        <a class="pill" href="#adoraciones">Adoraciones</a>
+        <a class="pill" href="#repertorios">Repertorios</a>
+        <a class="pill" href="#turnos">Turnos</a>
+        <a class="pill" href="#multitrack">Multitrack</a>
+      </nav>
+    </div>
+  </div>
 
-<div class="hero">
-<h1>WATER OF LIFE<br>AGUA DE VIDA</h1>
-<p>Sitio del ministerio para publicar canciones, repertorios y turnos.</p>
-<a class="btn" href="#alabanzas">Ver canciones</a>
-</div>
+  <main class="wrap">
+    <div class="hero" id="inicio">
+      <div class="hero-inner">
+        <h2>WATER OF LIFE<br/>AGUA DE VIDA</h2>
+        <p>Sitio del ministerio para publicar <b>canciones (acordes)</b>, <b>repertorios</b>, <b>turnos semanales</b> y <b>multitracks</b>. Todo ordenado, rápido y desde el celular.</p>
 
-<div class="section" id="alabanzas">
-<h2>Alabanzas</h2>
+        <div class="cta-row">
+          <a class="btn big" href="#repertorios">📋 Ver repertorios</a>
+          <a class="btn" href="#multitrack">🎧 Ir a multitracks</a>
+          <a class="btn" href="#alabanzas">🔎 Buscar canciones</a>
+        </div>
 
-<div class="card song">
-<h3>Grande y Fuerte</h3>
-<p>Tono: G · BPM: 132</p>
-<details>
-<summary>Ver letra + acordes</summary>
-<pre>
-G       D
-Grande y fuerte es nuestro Dios
-Em      C
-Digno de adoración
-</pre>
-</details>
-</div>
+        <p class="muted" style="margin-top:6px;">
+          Tip: podés pegar links de Google Drive para audios y PDFs (acordes/letras) sin complicarte.
+        </p>
+      </div>
+    </div>
 
-<div class="card song">
-<h3>Santo Espíritu</h3>
-<p>Tono: D · BPM: 105</p>
-<details>
-<summary>Ver letra + acordes</summary>
-<pre>
-D        A
-Ven Espíritu Santo
-Bm       G
-Llena este lugar
-</pre>
-</details>
-</div>
+    <!-- BUSCADOR -->
+    <section>
+      <div class="section-title">
+        <h3>Buscador</h3>
+        <p>Escribí para filtrar por nombre (funciona para Alabanzas + Adoraciones)</p>
+      </div>
+      <div class="card pad">
+        <div class="search">
+          <span class="tag">🔍</span>
+          <input id="songSearch" type="text" placeholder="Buscar canción (ej: Yahweh, Gloria, Rompimiento...)" />
+          <small id="counter" class="mono">0</small>
+        </div>
+      </div>
+    </section>
 
-</div>
+    <!-- ALABANZAS -->
+    <section id="alabanzas">
+      <div class="section-title">
+        <h3>Alabanzas</h3>
+        <p>Más movidas / congregacionales</p>
+      </div>
 
-<div class="section" id="turnos">
-<h2>Turnos Semanales</h2>
-<div class="card">
-<p>Voz principal: ______</p>
-<p>Coros: ______</p>
-<p>Batería: ______</p>
-<p>Bajo: ______</p>
-<p>Teclado: ______</p>
-</div>
-</div>
+      <div class="grid two" id="songsAlabanzas">
 
-<div class="section" id="multitrack">
-<h2>Multitrack & Audios</h2>
-<div class="card">
-<p>Pegar aquí links de Google Drive.</p>
-</div>
-</div>
+        <!-- ROMPIMIENTO -->
+        <article class="card song" data-search="rompimiento new wine algo bueno viene">
+          <div class="pad">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
+              <div>
+                <h4 style="margin:0;font-size:18px">Rompimiento (New Wine)</h4>
+                <div class="kpi">
+                  <span class="chip acc"><b>Tono:</b> Dm</span>
+                  <span class="chip purp"><b>BPM:</b> 157</span>
+                  <span class="chip ok">Drive</span>
+                </div>
+              </div>
+              <div class="row-actions">
+                <a class="tiny ok" href="https://drive.google.com/file/d/1TP35aWMaaoheOpagkAXMzVtfg_VgLmFS/view?usp=drivesdk" target="_blank" rel="noreferrer">📄 Ver en Drive</a>
+              </div>
+            </div>
+          </div>
+          <details>
+            <summary>▶ Ver estructura + acordes <span class="muted">▼</span></summary>
+            <div class="song-body">
+Intro/Verso: Dm - Bb - F - C (o Am en variaciones)
+Coro ("Yo sé que viene rompimiento"): Dm - Gm7 - A7 - Dm
+Puente ("Y lo alabo por mi rompimiento"): Dm - Gm7 - G# - A7 - Bbmaj7 - Gm9
+            </div>
+          </details>
+        </article>
 
-<footer>
-© 2026 WATER OF LIFE · AGUA DE VIDA
-</footer>
+        <!-- YO QUIERO VER (MEDLEY) -->
+        <article class="card song" data-search="yo quiero ver dante gebel medley libertad espiritu de dios">
+          <div class="pad">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
+              <div>
+                <h4 style="margin:0;font-size:18px">Yo quiero ver (Medley) · Dante Gebel</h4>
+                <div class="kpi">
+                  <span class="chip acc"><b>Tono:</b> (varios)</span>
+                  <span class="chip purp"><b>BPM:</b> —</span>
+                  <span class="chip ok">Drive</span>
+                </div>
+              </div>
+              <div class="row-actions">
+                <a class="tiny ok" href="https://drive.google.com/file/d/12Y5weK9UbX-EBis0UIZiPDqU2BMrGrBW/view?usp=drivesdk" target="_blank" rel="noreferrer">📄 Ver en Drive</a>
+              </div>
+            </div>
+          </div>
+          <details>
+            <summary>▶ Ver acordes guía <span class="muted">▼</span></summary>
+            <div class="song-body">
+Parte 1 (Libertad): F - C / C - G / F - C / G - C (repite)
+Parte 2 (Se mueve): D - A - D - G - A - D (repite)
+Guitarra: Dm - C - D - A - F
+Instrumental: D - G - D / D - G - A - D
+            </div>
+          </details>
+        </article>
 
+      </div>
+    </section>
+
+    <!-- ADORACIONES -->
+    <section id="adoraciones">
+      <div class="section-title">
+        <h3>Adoraciones</h3>
+        <p>Más tranquilas / profunda adoración</p>
+      </div>
+
+      <div class="grid two" id="songsAdoraciones">
+
+        <!-- TE DOY GLORIA -->
+        <article class="card song" data-search="te doy gloria omar rodriguez cuan hermoso eres jesus">
+          <div class="pad">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
+              <div>
+                <h4 style="margin:0;font-size:18px">Te Doy Gloria · Omar Rodríguez</h4>
+                <div class="kpi">
+                  <span class="chip acc"><b>Tono:</b> C</span>
+                  <span class="chip purp"><b>BPM:</b> 138</span>
+                  <span class="chip ok">Drive</span>
+                </div>
+              </div>
+              <div class="row-actions">
+                <a class="tiny ok" href="https://drive.google.com/file/d/1FMF6EIIMfWuhfT3nGfSDv92Q59eZ9sey/view?usp=drivesdk" target="_blank" rel="noreferrer">📄 Ver en Drive</a>
+              </div>
+            </div>
+          </div>
+          <details>
+            <summary>▶ Ver acordes guía <span class="muted">▼</span></summary>
+            <div class="song-body">
+Verso:
+C
+G
+Am
+F
+
+Pre-coro:
+C - Am - G - F
+
+Coro:
+C
+G
+C
+Am7
+F
+G
+
+Puente:
+Am - C (Con una corona de espinos...)
+            </div>
+          </details>
+        </article>
+
+        <!-- YAHWEH -->
+        <article class="card song" data-search="yahweh christine dclario rey de gloria poderoso">
+          <div class="pad">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
+              <div>
+                <h4 style="margin:0;font-size:18px">Yahweh · Christine D’Clario</h4>
+                <div class="kpi">
+                  <span class="chip acc"><b>Tono:</b> C</span>
+                  <span class="chip purp"><b>BPM:</b> 69</span>
+                  <span class="chip ok">Drive</span>
+                </div>
+              </div>
+              <div class="row-actions">
+                <a class="tiny ok" href="https://drive.google.com/file/d/1giH_iPJPS0jUIOAxsVcO_YGXlrG1ShrE/view?usp=drivesdk" target="_blank" rel="noreferrer">📄 Ver en Drive</a>
+              </div>
+            </div>
+          </div>
+          <details>
+            <summary>▶ Ver estructura + acordes <span class="muted">▼</span></summary>
+            <div class="song-body">
+Intro (arpegios): Am - F - C - G
+Verso: Am - F - C - G
+Coro:  Am - F - C - G
+Puente: F - G - Am - Em (repetir según la intensidad)
+            </div>
+          </details>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- REPERTORIOS -->
+    <section id="repertorios">
+      <div class="section-title">
+        <h3>Repertorios</h3>
+        <p>Listas para culto / ensayo (podés ir sumando)</p>
+      </div>
+
+      <div class="card pad">
+        <div class="cols">
+          <div class="card pad" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12)">
+            <h4 style="margin:0 0 8px">Bloques</h4>
+            <ul class="list">
+              <li>Gloria Shekina</li>
+              <li>El Tiempo de cantar llegó</li>
+              <li>Rey ven y toma tu lugar</li>
+              <li>Con saltos de alegría</li>
+              <li>Libre para correr</li>
+            </ul>
+            <hr style="border:0;border-top:1px solid rgba(255,255,255,.10);margin:10px 0">
+            <ul class="list">
+              <li>Danzando</li>
+              <li>Alaba</li>
+              <li>Aleluya</li>
+              <li>Fiesta en el desierto</li>
+            </ul>
+            <hr style="border:0;border-top:1px solid rgba(255,255,255,.10);margin:10px 0">
+            <ul class="list">
+              <li>Música del Cielo</li>
+              <li>Te Doy Gloria</li>
+              <li>Mi Dios Es Grande (NewW)</li>
+              <li>Rey (Christine D’Clario)</li>
+            </ul>
+          </div>
+
+          <div class="card pad" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12)">
+            <h4 style="margin:0 0 8px">Más repertorios</h4>
+            <ul class="list">
+              <li>Yahweh (Christine D’Clario)</li>
+              <li>Grande y fuerte</li>
+              <li>Eres Fiel</li>
+              <li>Digno de Gloria</li>
+            </ul>
+
+            <hr style="border:0;border-top:1px solid rgba(255,255,255,.10);margin:10px 0">
+
+            <ul class="list">
+              <li>Al que me ciñe de poder (SOL)</li>
+              <li>Ven es hora de Adorarle (DO)</li>
+              <li>Abre mis ojos oh Cristo (DO)</li>
+              <li>Mi Plenitud (DO)</li>
+              <li>Yeshua (DO)</li>
+            </ul>
+
+            <hr style="border:0;border-top:1px solid rgba(255,255,255,.10);margin:10px 0">
+
+            <ul class="list">
+              <li>Jehová es mi guerrero</li>
+              <li>Los carros del faraón</li>
+              <li>El poderoso de Israel</li>
+              <li>Remolineando</li>
+              <li>Digno + Al que está sentado en el trono</li>
+            </ul>
+
+            <p class="muted" style="margin:10px 0 0;font-size:12px">
+              Adoración: Santo es el que vive (Montesanto) · Santa Cena: Lo único que quiero (Marcela Gándara)
+            </p>
+          </div>
+        </div>
+
+        <div class="row-actions" style="margin-top:12px">
+          <a class="tiny" href="#alabanzas">🎵 Ir a canciones</a>
+          <a class="tiny" href="#turnos">🗓️ Ver turnos</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TURNOS -->
+    <section id="turnos">
+      <div class="section-title">
+        <h3>Turnos semanales</h3>
+        <p>Voces + batería (rotación automática desde 04/03/2026 hasta diciembre)</p>
+      </div>
+
+      <div class="turnos-grid">
+
+        <div class="card pad">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+            <h4 style="margin:0">Semana (Fecha a Fecha)</h4>
+            <span class="badge" id="badgeActual">Actual</span>
+          </div>
+
+          <p class="muted" style="margin:6px 0 0">
+            Se calcula el <b>próximo miércoles</b>. Si hoy es miércoles, te muestra el de hoy.
+          </p>
+
+          <div style="margin-top:12px" class="mono" id="fechaTurno">—</div>
+
+          <div class="turno-line">🎤 <span>Voz:</span> <div id="turnoVoz" style="margin-left:auto">—</div></div>
+          <div class="turno-line">🥁 <span>Batería:</span> <div id="turnoBateria" style="margin-left:auto">—</div></div>
+
+          <hr style="border:0;border-top:1px solid rgba(255,255,255,.10);margin:12px 0">
+
+          <div class="row-actions">
+            <a class="tiny" href="#repertorios">📋 Repertorios</a>
+            <a class="tiny" href="#multitrack">🎧 Multitracks</a>
+          </div>
+        </div>
+
+        <div class="card pad">
+          <h4 style="margin:0 0 8px">Reglas rápidas</h4>
+          <ul class="list">
+            <li>Confirmar asistencia 24h antes.</li>
+            <li>Llegar 30 min antes.</li>
+            <li>Revisar tonos y multitracks antes del ensayo.</li>
+          </ul>
+
+          <div class="card pad" style="margin-top:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12)">
+            <h4 style="margin:0 0 6px">📌 Sugerencia pro</h4>
+            <p class="muted" style="margin:0">
+              Si querés que solo el equipo lo vea, usen links a Drive con permiso “solo con enlace”
+              o después armamos una web privada.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="card pad" style="margin-top:12px">
+        <h4 style="margin:0 0 8px">Calendario (resumen)</h4>
+        <p class="muted" style="margin:0 0 10px">Marzo ya definido y luego continúa la rotación automáticamente.</p>
+        <ul class="list">
+          <li><b>04/03</b>: Voz <b>Emanuel Romero</b> · Batería <b>Jesús Romero</b></li>
+          <li><b>11/03</b>: Voz <b>Miryan Galván</b> · Batería <b>Yoel Villarpando</b></li>
+          <li><b>18/03</b>: Voz <b>Matías Villagra</b> · Batería <b>Marcos Sosa</b></li>
+          <li><b>25/03</b>: Voz <b>Segundo Gordillo</b> · Batería <b>Jesús Romero</b></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- MULTITRACK -->
+    <section id="multitrack">
+      <div class="section-title">
+        <h3>Multitrack & Audios</h3>
+        <p>Links a carpetas, pistas, click, guía, stems, etc.</p>
+      </div>
+
+      <div class="grid two">
+        <div class="card pad">
+          <h4 style="margin:0 0 8px">Carpeta general</h4>
+          <p class="muted" style="margin:0;font-size:13px">Un solo botón con todo lo del ministerio (Drive).</p>
+          <div class="row-actions" style="margin-top:10px">
+            <a class="tiny" href="#" target="_blank" rel="noreferrer">📁 Abrir carpeta</a>
+          </div>
+          <p class="muted" style="margin-top:10px;font-size:12px">Tip: pegá acá el link de la carpeta cuando lo tengas.</p>
+        </div>
+
+        <div class="card pad">
+          <h4 style="margin:0 0 8px">Contactos</h4>
+          <p class="muted" style="margin:0;font-size:13px">Para pedir acceso / links:</p>
+          <div class="card pad" style="margin-top:10px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12)">
+            <div class="muted">📌 (poné acá WhatsApp o mail)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <p class="footer">© 2026 WATER OF LIFE · AGUA DE VIDA</p>
+  </main>
+
+  <script>
+    // ====== Buscador (filtra .song por data-search) ======
+    const input = document.getElementById('songSearch');
+    const counter = document.getElementById('counter');
+    const songs = Array.from(document.querySelectorAll('.song'));
+
+    function updateCounter(){
+      const visible = songs.filter(c => c.style.display !== 'none').length;
+      counter.textContent = visible + " visibles";
+    }
+
+    if(input){
+      input.addEventListener('input', () => {
+        const q = (input.value || '').trim().toLowerCase();
+        songs.forEach(card => {
+          const hay = (card.getAttribute('data-search') || '').toLowerCase();
+          card.style.display = (!q || hay.includes(q)) ? '' : 'none';
+        });
+        updateCounter();
+      });
+      updateCounter();
+    }
+
+    // ====== Turnos automáticos (miércoles) ======
+    // Inicio rotación: 2026-03-04 (miércoles)
+    // Voces (ciclo 4): Emanuel, Miryan, Matías, Segundo
+    // Batería (ciclo 3): Jesús, Yoel, Marcos
+    const voces = ["EMANUEL ROMERO", "MIRYAN GALVÁN", "MATIAS VILLAGRA", "SEGUNDO GORDILLO"];
+    const baterias = ["JESÚS ROMERO", "YOEL VILLARPANDO", "MARCOS SOSA"];
+
+    const start = new Date(Date.UTC(2026, 2, 4)); // 2026-03-04 (mes 2 = marzo)
+    start.setUTCHours(0,0,0,0);
+
+    function toLocalDateString(d){
+      // dd/mm/yyyy
+      const dd = String(d.getDate()).padStart(2,'0');
+      const mm = String(d.getMonth()+1).padStart(2,'0');
+      const yy = d.getFullYear();
+      return `${dd}/${mm}/${yy}`;
+    }
+
+    function nextWednesdayLocal(){
+      const now = new Date();
+      const d = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      // 0 domingo ... 3 miércoles
+      const day = d.getDay();
+      const diff = (3 - day + 7) % 7;
+      // si hoy es miércoles, diff = 0 (muestra hoy)
+      d.setDate(d.getDate() + diff);
+      d.setHours(0,0,0,0);
+      return d;
+    }
+
+    function weeksBetween(a, b){
+      // diferencia en semanas enteras entre fechas (asumiendo mismas "medianoche local")
+      const ms = 24*60*60*1000;
+      const diffDays = Math.round((b - a) / ms);
+      return Math.floor(diffDays / 7);
+    }
+
+    function localStartFromUTC(utcDate){
+      // convierte "start" UTC a medianoche local equivalente (para contar semanas sin lío)
+      return new Date(utcDate.getUTCFullYear(), utcDate.getUTCMonth(), utcDate.getUTCDate());
+    }
+
+    const startLocal = localStartFromUTC(start);
+    const target = nextWednesdayLocal();
+
+    const w = weeksBetween(startLocal, target);
+    const voz = voces[((w % voces.length) + voces.length) % voces.length];
+    const bat = baterias[((w % baterias.length) + baterias.length) % baterias.length];
+
+    const fechaEl = document.getElementById('fechaTurno');
+    const vozEl = document.getElementById('turnoVoz');
+    const batEl = document.getElementById('turnoBateria');
+
+    if(fechaEl) fechaEl.textContent = "📅 " + toLocalDateString(target);
+    if(vozEl) vozEl.textContent = voz;
+    if(batEl) batEl.textContent = bat;
+  </script>
 </body>
 </html>
+Update full site (songs + repertorios + turnos)
